@@ -7,9 +7,9 @@ exports.validate = (data) ->
   
   exports.validate = (data) ->
 
-  if data.id > 0 then return false
+  if data.id < 0 then return false
 
-  if data.namelength > 255 && data.name is !string  then return false
+  if data.namelength <= 255 && data.name is !string  then return false
 
   if !/\w+@\w+/.test data.email then return false
 
