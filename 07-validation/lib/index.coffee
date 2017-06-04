@@ -3,11 +3,23 @@
 
 exports.validate = (data) ->
 
-  # Very naive checks - change them!
-  if data.id < 0 then return false
+  # Very naive checks - change them!  
+  
+  exports.validate = (data) ->
 
-  if data.name isnt 'John Doe' then return false
+  if data.id > 0 then return false
+
+  if data.namelength > 255 && data.name is !string  then return false
 
   if !/\w+@\w+/.test data.email then return false
 
-  return true
+  if data.taxRate < 0 && data.taxRate > 1 && data.taxRate is !number then return false
+
+  if !/\b[0-9A-Fa-f]{6}\b/g.test data.favouriteColour then return null
+
+  for interest in data.interests && interest <= 4 && interest is string then return null   
+  
+  return true 
+  
+  
+  
